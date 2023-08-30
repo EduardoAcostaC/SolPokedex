@@ -1,0 +1,74 @@
+﻿@using Pokedex.Models
+
+@model List<Pokemon>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaPrincipal</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-1"><img src="~/Img/pokeball_PNG.png" class="img-fluid" style="max-width: 100px;" /> Mi Pokédex </h1>
+
+        <div class="d-flex justify-content-end mb-3">
+            <a class="btn btn-success" href="/Home/IrFormulario"> Agregar </a>
+        </div>
+
+
+        <!-- Mensajes -->
+        @if (TempData["mensaje"] != null)
+        {
+            <div class="alert alert-success">
+                <b>@TempData["mensaje"]</b>
+            </div>
+        }
+
+
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">
+                Hubo un error, favor de contactar al administrador.
+            </div>
+        }
+
+        <!-- Cartas -->
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+
+            @foreach (Pokemon pokemon in Model)
+            {
+                <div class="col">
+                    <div class="card text-dark bg-light">
+
+                        <img src="@pokemon.imgPokemon" class="card-img-top" alt="@pokemon.nombre">
+                        <div class="card-body">
+                            <h5 class="card-title"> @pokemon.nombre </h5>
+                            <h6 class="card-subtitle text-muted">N.° @pokemon.idPokemon.ToString("0000") </h6>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Tipo: @pokemon.tipo</li>
+                            <li class="list-group-item">Generación: @pokemon.generacion</li>
+                            <li class="list-group-item">N.° Evoluciones: @pokemon.evoluciones</li>
+                            <li class="list-group-item">¿Atrapado? @pokemon.pokemonObtenido</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="/Home/Editar?id=@pokemon.idPokemon" class="btn btn-primary">Editar</a>
+                            <a href="/Home/Eliminar?id=@pokemon.idPokemon" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</body>
+</html>

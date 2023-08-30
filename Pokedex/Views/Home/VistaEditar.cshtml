@@ -1,0 +1,65 @@
+﻿@using Pokedex.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaEditar</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-2"> Editar Pokemon</h1>
+
+        <form action="/Home/EditarPOST" method="post">
+
+            <input type="hidden" name="idPokemon" value="@Model.idPokemon" />
+
+            <div class="mb-3">
+                <label class="form-label"> Nombre </label>
+                <input type="text" name="nombre" class="form-control" required value="@Model.nombre" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Tipo </label>
+                <input type="text" name="tipo" class="form-control" required value="@Model.tipo" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Generación </label>
+                <input type="text" name="generacion" class="form-control" required value="@Model.generacion" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Evoluciones </label>
+                <input type="number" name="evoluciones" class="form-control" required value="@Model.evoluciones" />
+            </div>
+
+            <div class="mb-3">
+                <label> ¿Atrapado? </label>
+                <div>
+                    <!-- Radio Button -->
+                    <input type="radio" name="obtenido" value="true" @(Model.obtenido == true ? "checked" : "") />
+                    <label>Si</label>
+                </div>
+                <div>
+                    <input type="radio" name="obtenido" value="false" @(Model.obtenido == true ? "" : "checked") />
+                    <label>No</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Número de la Pokédex </label>
+                <input type="number" name="numeroPokemon" class="form-control" required value="@Model.numeroPokemon" />
+            </div>
+
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            <a href="/Home/Index" class="btn btn-primary">Regresar</a>
+        </form>
+    </div>
+</body>
+</html>

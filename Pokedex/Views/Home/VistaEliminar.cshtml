@@ -1,0 +1,49 @@
+﻿@using Pokedex.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaEliminar</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+
+
+        <h1 class="display-2"> Eliminar Pokémon </h1>
+
+        <h6 class="mb-3 display-5">¿Deseas eliminar al Pokémon @Model.nombre de tu Pokédex?</h6>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4 mb-3 justify-content-center">
+            <div class="col">
+                <div class="card text-dark bg-light">
+
+                    <img src="@Model.imgPokemon" class="card-img-top img-thumbnail" alt="@Model.nombre">
+                    <div class="card-body">
+                        <h5 class="card-title"> @Model.nombre </h5>
+                        <h6 class="card-subtitle text-muted">N.° @Model.idPokemon.ToString("0000") </h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Tipo: @Model.tipo</li>
+                        <li class="list-group-item">Generación: @Model.generacion</li>
+                        <li class="list-group-item">N.° Evoluciones: @Model.evoluciones</li>
+                        <li class="list-group-item">¿Atrapado? @Model.pokemonObtenido</li>
+
+                    </ul>
+                    <div class="card-footer">
+                        <a href="/Home/EliminarPokemon?id=@Model.idPokemon" class="btn btn-success">Eliminar</a>
+                        <a href="/Home/Index" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

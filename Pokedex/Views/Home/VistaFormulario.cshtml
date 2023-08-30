@@ -1,0 +1,73 @@
+﻿
+ 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaFormulario</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-2"> Agregar Pokémon</h1>
+
+        <div class="container text-center">
+            <div class="alert alert-info mt-3">
+                ¡Explora la <a href="https://www.pokemon.com/es/pokedex/" target="_blank">Pokédex oficial</a> para más información!
+            </div>
+        </div>
+
+        <form action="/Home/FormularioPOST" method="post">
+
+            <div class="mb-3">
+                <label class="form-label"> Nombre </label>
+                <input type="text" name="nombre" class="form-control" required placeholder="Pikachu" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Tipo </label>
+                <input type="text" name="tipo" class="form-control" required placeholder="Eléctrico"/>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Generación </label>
+                <input type="text" name="generacion" class="form-control" required placeholder="1"/>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Evoluciones </label>
+                <input type="number" name="evoluciones" class="form-control" required placeholder="2" />
+            </div>
+
+            <div class="mb-3">
+                <label> ¿Atrapado? </label>
+                <div>
+                    <!-- Radio Button -->
+                    <input type="radio" name="obtenido" value="true" />
+                    <label>Si</label>
+                </div>
+                <div>
+                    <input type="radio" name="obtenido" value="false" />
+                    <label>No</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"> Número de la Pokédex </label>
+                <input type="number" name="numeroPokemon" class="form-control" required placeholder="25" />
+                <div class="form-text">Los pokémon disponibles se encuentran entre el 1 y el 1010.</div>
+            </div>
+
+            <input type="submit" value="Aceptar" class="btn btn-success" />
+            <a href="/Home/Index" class="btn btn-primary">Regresar</a>
+        </form>
+
+
+    </div>
+</body>
+</html>
